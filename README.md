@@ -13,7 +13,8 @@ $ helm install my-release bitnami/redis
 ```bash
 # Production configuration
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
-$ helm install my-release bitnami/redis --values values-production.yaml
+$ helm repo update
+$ helm install bitnami/redis --name my-release --values values-production.yaml --namespace <name of your namespace>
 ```
 
 ## Introduction
@@ -33,7 +34,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm install my-release bitnami/redis
+$ helm install --name my-release bitnami/redis
 ```
 
 The command deploys Redis on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -45,7 +46,7 @@ The command deploys Redis on the Kubernetes cluster in the default configuration
 To uninstall/delete the `my-release` deployment:
 
 ```bash
-$ helm delete my-release
+$ helm del --purge my-release
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
